@@ -70,7 +70,7 @@ export default function AddTask({ listTasks, dbtype, team, listGroupTasks }) {
     }
 
     return (
-        <div style={!team ? { position: "absolute", right: '100px' } : {}}>
+        <div style={!team ? { position: 'sticky' } : {}}>
             <form className='add-form' onSubmit={onSubmit}>
                 <div className='form-control'>
                     <label>Task</label>
