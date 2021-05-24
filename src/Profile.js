@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import fbase from './firebase';
+import Image from 'react-bootstrap/Image'
 
 export default function Profile() {
     const [imgUrl, setImageUrl] = useState();
@@ -35,6 +36,7 @@ export default function Profile() {
     return (
         <div className='profile'>
             <h1>Profile Page</h1>
+
             <img src={imgUrl} alt="couldn't load" height='300px' width='300px' />
             {name ? <h2>Name: {name}</h2> : <h3>Name wasn't provided</h3>}
             {email ? <h2>Email: {email}</h2> : <h3>Email wasn't provided</h3>}

@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Profile from './Profile';
 import Groups from './Groups';
 
+
 function App() {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');

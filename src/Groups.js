@@ -3,6 +3,7 @@ import Select from 'react-select';
 import fbase from './firebase';
 import Team from './Team';
 
+
 export default function Groups() {
     const [teamName, setTeamName] = useState('');
     const [teamRole, setTeamRole] = useState('');
@@ -77,46 +78,47 @@ export default function Groups() {
 
 
     return (
-        <div className='groups'>
+        <div className='groups-main'>
             <h1>Groups page</h1>
+            <div className='groups'>
 
-            <div className="groups-form">
-                <form className='add-form' onSubmit={onSubmit}>
-                    <div className='form-control'>
-                        <label>Team Name</label>
-                        <input
-                            type='text'
-                            placeholder='Add team name'
-                            value={teamName}
-                            onChange={(e) => setTeamName(e.target.value)}
-                        />
-                    </div>
-                    <div className='form-control'>
-                        <label>Team Role</label>
-                        <input
-                            type='text'
-                            placeholder='Team Role'
-                            value={teamRole}
-                            onChange={(e) => setTeamRole(e.target.value)}
-                        />
-                    </div>
-                    <div className='form-control form-control-check'>
-                        <label>Team Description</label>
-                        <textarea value={teamDescription} onChange={(e) => setTeamDescription(e.target.value)} />
-                    </div>
+                <div className="groups-form">
+                    <form className='add-form' onSubmit={onSubmit}>
+                        <div className='form-control'>
+                            <label>Team Name</label>
+                            <input
+                                type='text'
+                                placeholder='Add team name'
+                                value={teamName}
+                                onChange={(e) => setTeamName(e.target.value)}
+                            />
+                        </div>
+                        <div className='form-control'>
+                            <label>Team Role</label>
+                            <input
+                                type='text'
+                                placeholder='Team Role'
+                                value={teamRole}
+                                onChange={(e) => setTeamRole(e.target.value)}
+                            />
+                        </div>
+                        <div className='form-control form-control-check'>
+                            <label>Team Description</label>
+                            <textarea value={teamDescription} onChange={(e) => setTeamDescription(e.target.value)} />
+                        </div>
 
-                    <Select options={members} isMulti onChange={opt => setTeamMembers(opt)} onInputChange={userQuerry()}>
+                        <Select options={members} isMulti onChange={opt => setTeamMembers(opt)} onInputChange={userQuerry()}>
 
-                    </Select>
-                    <input type='submit' value='Create Team' className='btn btn-block' />
-                </form>
+                        </Select>
+                        <input type='submit' value='Create Team' className='btn btn-block' />
+                    </form>
+                </div>
+                <div>
+                    {teams ? teams.map(team => {
+                        return (<Team key={team.id} team={team} />)
+                    }) : <h3>You're not a member of any team</h3>}
+                </div>
             </div>
-            <div>
-                {teams ? teams.map(team => {
-                    return (<Team key={team.id} team={team} />)
-                }) : <h3>You're not a member of any team</h3>}
-            </div>
-
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import fbase from './firebase';
+import Form from 'react-bootstrap/Form';
 const { v4: uuidv4 } = require('uuid');
+
 
 export default function AddTask({ listTasks, dbtype, team, listGroupTasks }) {
     const [text, setText] = useState('');
@@ -70,7 +72,7 @@ export default function AddTask({ listTasks, dbtype, team, listGroupTasks }) {
     }
 
     return (
-        <div style={!team ? { position: 'sticky' } : {}}>
+        <div >
             <form className='add-form' onSubmit={onSubmit}>
                 <div className='form-control'>
                     <label>Task</label>
@@ -110,6 +112,6 @@ export default function AddTask({ listTasks, dbtype, team, listGroupTasks }) {
 
                 <input type='submit' value='Save Task' className='btn btn-block' />
             </form>
-        </div>
+        </div >
     );
 }
